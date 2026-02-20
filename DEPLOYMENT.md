@@ -20,7 +20,7 @@ If you prefer to set it up manually:
 
 1.  Select **"Static Site"** on Render.
 2.  **Build Command**: `npm run build`
-3.  **Publish Directory**: `dist`
+3.  **Publish Directory**: `dist` (⚠️ **CRITICAL**: Do NOT use your project name here. It must be `dist`.)
 4.  **Advanced Options**:
     *   Add a **Rewrite Rule**:
         *   **Source**: `/*`
