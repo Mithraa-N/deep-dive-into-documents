@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 213 31% 91%;
+
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222.2 47.4% 11.2%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 263.4 70% 50.4%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222.2 84% 4.9%;
+    --input: 222.2 84% 4.9%;
+    --ring: 263.4 70% 50.4%;
+
+    --radius: 1rem;
+
+    /* Premium Custom Tokens */
+    --surface: 224 71% 7%;
+    --surface-elevated: 224 71% 10%;
+    --glass: rgba(15, 23, 42, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+
+    --brand-gradient: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+    --brand-glow: 0 0 20px rgba(124, 58, 237, 0.2);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(at 0% 0%, rgba(124, 58, 237, 0.08) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.08) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  code,
+  pre,
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: var(--glass);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  .glow-border {
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.05);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glow-border:hover {
+    border-color: rgba(124, 58, 237, 0.5);
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.15);
+  }
+
+  .gradient-brand {
+    background: var(--brand-gradient);
+    box-shadow: var(--brand-glow);
+    transition: all 0.3s ease;
+  }
+
+  .gradient-brand:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.3);
+  }
+
+  .message-user {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(59, 130, 246, 0.1));
+    border: 1px solid rgba(124, 58, 237, 0.1);
+    backdrop-filter: blur(8px);
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .message-ai {
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .citation-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest leading-none;
+    background: rgba(124, 58, 237, 0.15);
+    color: #c4b5fd;
+    border: 1px solid rgba(124, 58, 237, 0.3);
+  }
+
+  .upload-zone {
+    @apply border-2 border-dashed border-white/5 bg-white/[0.01] transition-all duration-700;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .upload-zone.dragging {
+    @apply border-primary/50 bg-primary/10;
+    box-shadow: 0 0 60px rgba(124, 58, 237, 0.15);
+    transform: scale(1.01);
+  }
+
+  .scrollbar-premium::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-premium::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-premium::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+  }
+
+  .scrollbar-premium::-webkit-scrollbar-thumb:hover {
+    background: rgba(124, 58, 237, 0.3);
+  }
+
+  .nav-blur {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .mono-glow {
+    text-shadow: 0 0 10px rgba(167, 139, 250, 0.4);
+  }
+}
